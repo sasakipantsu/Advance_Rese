@@ -21,7 +21,7 @@ class SearchController extends Controller
             ])->paginate(20);
 
             // Genre::where('genre_name', $request->genre_name)->paginate(20);
-        // dd($shops);
+        // dd($shops);php
 
         return view('index', ['shops' => $shops]);
     }
