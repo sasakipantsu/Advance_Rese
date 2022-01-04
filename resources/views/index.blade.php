@@ -79,7 +79,7 @@
 
                         {{-- 地域検索 --}}
                         <select name="area_id" class="py-2 text-sm rounded-md">
-                                <option value="48" selected>all area</option>
+                                <option value=" " selected>all area</option>
                             <optgroup label="北海道">
                                 <option value="1">北海道</option>
                             </optgroup>
@@ -153,7 +153,7 @@
 
                         {{-- ジャンル検索 --}}
                         <select name="genre_name" class="py-2 text-sm rounded-md">
-                            <option value="全て" selected>All genre</option>
+                            <option value=" " selected>All genre</option>
                             <option value="寿司">寿司</option>
                             <option value="焼肉">焼肉</option>
                             <option value="イタリアン">イタリアン</option>
@@ -181,6 +181,11 @@
             {{-- 店舗カード --}}
             <div class="flex justify-evenly flex-wrap">
 
+                {{-- @if(!empty($message))
+                    <div class="alert alert-primary" role="alert">{{ $message}}</div>
+                @endif --}}
+
+                @if(isset($shops))
                 @foreach ($shops as $shop)
                     <div class="w-52 shadow-md mb-5">
                         <div>
@@ -229,6 +234,7 @@
                         </div>
                     </div>
                 @endforeach
+                @endif
             </div>
         </div>
     </div>
