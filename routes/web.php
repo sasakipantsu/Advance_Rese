@@ -40,11 +40,12 @@ require __DIR__.'/auth.php';
     Route::post('/{shop}/favorite', [FavoriteController::class, 'favorite'])->name('favorite');
     Route::post('/{shop}/favorite/delete', [FavoriteController::class, 'delete'])->name('favorite_delete');
 
+    // 予約
+    Route::post('/reservation',  [ReservationController::class, 'reservation'])->name('reservation');
+    
     // マイページ
     Route::get('/mypage',  [MypageController::class, 'mypage']);
 
-    // 予約
-    Route::post('/reservation',  [ReservationController::class, 'reservation'])->name('reservation');
 
 // });
 
