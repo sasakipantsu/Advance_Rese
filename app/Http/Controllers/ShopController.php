@@ -9,7 +9,6 @@ class ShopController extends Controller
 {
     public function index()
     {
-        // ShopModel::search(new ShopSearch())->where('example', 'test');
         $shops = Shop::with('genres')->get();
         // dd($shops);
         return view('index', ['shops' => $shops]);

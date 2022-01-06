@@ -54,35 +54,37 @@
 
         {{-- お気に入り店舗 --}}
         <div class="w-3/5">
-            <h2 class="text-2xl font-bold py-4">testさん</h2>
+            <h2 class="text-2xl font-bold py-4">{{ Auth::user()->name }}さん</h2>
             <h2 class="font-bold py-4">お気に入り店舗</h2>
 
             <div class="flex justify-evenly flex-wrap">
 
-                <div class="w-56 shadow-md mb-5">
-                    <div>
-                        <img src="/storage/img/sushi.jpg" alt="サンプル画像" class="w-full h-32 rounded-t-lg">
-                    </div>
-                    <div class="p-4 bg-white rounded-b-lg">
-                        <h2 class="font-bold pb-2">仙人</h2>
-                        <p class="text-xs pb-3">#東京都 #寿司</p>
-                        <button class="text-xs bg-blue-600 text-white px-5 py-1 rounded transition duration-200 hover:bg-blue-400"><a href="">詳しく見る</a></button>
-                    </div>
-                </div>
+                @foreach ($shops as $shop)
+                    <div class="w-52 shadow-md mb-5">
+                        <div>
+                            <img src="{{ $shop->img_url }}" alt="サンプル画像" class="w-full h-32 rounded-t-lg">
+                        </div>
+                        <div class="p-4 bg-white rounded-b-lg">
+                            <h2 class="font-bold pb-2">{{ $shop->name }}</h2>
+                            <div class="flex">
+                                <p class="text-xs pb-3">#{{ $shop->area->name }} </p>
+                                @foreach($shop->genres as $genre)
+                                <p class="text-xs pb-3 pl-4">#{{ $genre->genre_name }} </p>
+                                @endforeach
+                            </div>
 
-                <div class="w-56 shadow-md mb-5">
-                    <div>
-                        <img src="/storage/img/yakiniku.jpg" alt="サンプル画像" class="w-full h-32 rounded-t-lg">
+                            <div class="flex justify-between">
+                                <form action="/detail/{{ $shop->id }}" method="GET">
+                                    @csrf
+                                    <button type="submit" class="text-xs bg-blue-600 text-white px-5 py-1 rounded transition duration-200 hover:bg-blue-400">詳しく見る</button>
+                                </form>
+                            </div>
+                        </div>
                     </div>
-                    <div class="p-4 bg-white rounded-b-lg">
-                        <h2 class="font-bold pb-2">牛助</h2>
-                        <p class="text-xs pb-3">#大阪府 #焼肉</p>
-                        <button class="text-xs bg-blue-600 text-white px-5 py-1 rounded transition duration-200 hover:bg-blue-400"><a href="">詳しく見る</a></button>
-                    </div>
-                </div>
-
+                @endforeach
             </div>
         </div>
+
     </div>
 
 @endsection

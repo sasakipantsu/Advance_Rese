@@ -42,7 +42,8 @@ require __DIR__.'/auth.php';
 
     // 予約
     Route::post('/reservation',  [ReservationController::class, 'reservation'])->name('reservation');
-    
+    Route::post('/reservation/delete',  [ReservationController::class, 'delete'])->name('reservation_delete');
+
     // マイページ
     Route::get('/mypage',  [MypageController::class, 'mypage']);
 
