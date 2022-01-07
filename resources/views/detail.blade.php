@@ -39,7 +39,7 @@
 
             {{-- タグ --}}
             @foreach($shop->genres as $genre)
-            <p class="py-10">#{{ $shop->area->name }}  #{{ $genre->name }}</p>
+            <p class="py-10">#{{ $shop->area->name }}  #{{ $genre->genre_name }}</p>
             @endforeach
 
             {{-- 紹介文 --}}
