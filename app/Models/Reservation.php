@@ -13,4 +13,10 @@ class Reservation extends Model
         'start_at',
         'total_number',
     ];
+
+
+    public function shop()
+    {
+        return $this->belongsTo(Shop::class);
+    }
 }

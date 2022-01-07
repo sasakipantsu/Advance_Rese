@@ -13,13 +13,4 @@ class GenreShop extends Model
         'name',
     ];
 
-    // public function shop()
-    // {
-    //     return $this->belongsTo('App\Models\Shop');
-    // }
-
-    // public function genre()
-    // {
-    //     return $this->belongsTo('App\Models\Genre');
-    // }
 }
