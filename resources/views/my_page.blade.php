@@ -21,6 +21,16 @@
 
             <h2 class="font-bold pb-4 pt-20">予約状況</h2>
 
+            {{-- @if(empty($my_reservations))
+                <div class="alert alert-primary" role="alert">予約はねーよ！！</div>
+            @endif --}}
+
+            @if (session('flash_message'))
+                <div class="flash_message bg-success text-center py-3 my-0">
+                    {{ session('flash_message') }}
+                </div>
+            @endif
+
             @foreach ($my_reservations as $my_reservation)
                 <div class="py-6 px-5 text-sm bg-blue-600 text-white mb-4 rounded shadow-md">
 
@@ -49,9 +59,18 @@
                         </tr> --}}
                         <tr class="h-8">
                             <th class="w-1/3"> Number</th>
-                            <td class="pl-8">{{ $my_reservation->total_number }}</td>
+                            <td class="pl-8">{{ $my_reservation->total_number }}人</td>
                         </tr>
                     </table>
+
+                    {{-- 予約削除 --}}
+                    <form action="{{ route('reservation_delete') }}" method="POST">
+                        @csrf
+                        <div class="text-right mr-10">
+                            <input type="hidden" name="id" value="{{ $my_reservation->id }}">
+                            <button type="submit" class="shadow-lg px-3 py-1 bg-blue-500 text-white font-semibold rounded  hover:bg-blue-400 hover:shadow-sm hover:translate-y-0.5 transform transition">削除</button>
+                        </div>
+                    </form>
                 </div>
             @endforeach
         </div>

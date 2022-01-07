@@ -24,7 +24,7 @@
     </div>
 
 
-    <div class="py-10 h-screen px-40 flex justify-between">
+    <div class="py-10 h-full px-40 flex justify-between">
 
         {{-- 店舗詳細 --}}
         <div class="w-5/12">
@@ -97,7 +97,7 @@
                         </div>
 
                         {{-- 予約確認 --}}
-                        <div class="py-6 bg-blue-500 rounded-md">
+                        {{-- <div class="py-6 bg-blue-500 rounded-md">
                             <table class="w-full text-left text-white">
                                 <tr>
                                     <th class="w-1/3 pl-4">Shop</th>
@@ -116,7 +116,7 @@
                                     <td>仮１</td>
                                 </tr>
                             </table>
-                        </div>
+                        </div> --}}
                     </div>
 
                     {{-- ボタン --}}

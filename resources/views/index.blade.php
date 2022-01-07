@@ -185,7 +185,6 @@
                     <div class="alert alert-primary" role="alert">{{ $message}}</div>
                 @endif --}}
 
-                {{-- @if(isset($shops)) --}}
                 @foreach ($shops as $shop)
                     <div class="w-52 shadow-md mb-5">
                         <div>
@@ -234,7 +233,6 @@
                         </div>
                     </div>
                 @endforeach
-                {{-- @endif --}}
             </div>
         </div>
     </div>
