@@ -78,7 +78,19 @@
                         @csrf
 
                         {{-- 地域検索 --}}
-                        <select name="area_id" class="py-2 text-sm rounded-md">
+                        <select name = "area_id" class="py-2 text-sm rounded-md">
+                            <option value = "0" selected>all area</option>
+                            @foreach($prefs as $pref)
+                                @if((!empty($request->area_id) && $request->area_id == $pref->id))
+                                    <option value = "{{ $pref->id }}" selected>{{ $pref->name }}</option>
+                                @else
+                                    <option value = "{{ $pref->id }}">{{ $pref->name }}</option>
+                                @endif
+                            @endforeach
+                        </select>
+
+
+                        {{-- <select name="area_id" class="py-2 text-sm rounded-md">
                                 <option value="0" selected>all area</option>
                             <optgroup label="北海道">
                                 <option value="1">北海道</option>
@@ -149,7 +161,7 @@
                             <optgroup label="沖縄">
                                 <option value="47">沖縄県</option>
                             </optgroup>
-                        </select>
+                        </select> --}}
 
                         {{-- ジャンル検索 --}}
                         <select name="genre_id" class="py-2 text-sm rounded-md">
