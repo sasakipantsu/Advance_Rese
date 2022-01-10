@@ -16,7 +16,6 @@ class GenresTableSeeder extends Seeder
     public function run()
     {
         DB::table('genres')->insert([
-            ['genre_name' => '全て'],
             ['genre_name' => '寿司'],
             ['genre_name' => '焼肉'],
             ['genre_name' => 'イタリアン'],

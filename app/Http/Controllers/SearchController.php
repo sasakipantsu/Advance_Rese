@@ -99,32 +99,50 @@ class SearchController extends Controller
 
         // dd($shops);
 
+
         $prefs = Area::get();
+        $genres = Genre::get();
         $query = Shop::query();
 
 
         if(!empty($request->area_id) && empty($request->genre_id) && empty($request->name)) {
             $shops = $query->where('area_id', $request->area_id)->get();
-            return view('index')->with(['shops' => $shops, 'prefs' => $prefs]);
+            return view('index')->with([
+                'shops' => $shops,
+                'prefs' => $prefs,
+                'genres' => $genres,
+            ]);
         }
 
         elseif(empty($request->area_id) && !empty($request->genre_id) && empty($request->name)) {
             $shops = Shop::with('genres')
             ->whereHas('genres', function ($query) use ($request){
             $query->where('genre_id', $request->genre_id);})->get();
-            return view('index')->with(['shops' => $shops, 'prefs' => $prefs]);
+            return view('index')->with([
+                'shops' => $shops,
+                'prefs' => $prefs,
+                'genres' => $genres,
+            ]);
         }
 
         elseif(empty($request->area_id) && empty($request->genre_id) && !empty($request->name)) {
             $shops = $query->where('name', 'LIKE', "%{$request->name}%")->get();
-            return view('index')->with(['shops' => $shops, 'prefs' => $prefs]);
+            return view('index')->with([
+                'shops' => $shops,
+                'prefs' => $prefs,
+                'genres' => $genres,
+            ]);
         }
 
         elseif(!empty($request->area_id) && !empty($request->genre_id) && empty($request->name)) {
             $shops = Shop::where('area_id', $request->area_id)->with('genres')
             ->whereHas('genres', function ($query) use ($request){
             $query->where('genre_id', $request->genre_id);})->get();
-            return view('index')->with(['shops' => $shops, 'prefs' => $prefs]);
+            return view('index')->with([
+                'shops' => $shops,
+                'prefs' => $prefs,
+                'genres' => $genres,
+            ]);
         }
 
         elseif(!empty($request->area_id) && empty($request->genre_id) && !empty($request->name)) {
@@ -132,14 +150,22 @@ class SearchController extends Controller
                 ['area_id', $request->area_id],
                 ['name', 'LIKE', "%{$request->name}%"],
             ])->get();
-            return view('index')->with(['shops' => $shops, 'prefs' => $prefs]);
+            return view('index')->with([
+                'shops' => $shops,
+                'prefs' => $prefs,
+                'genres' => $genres,
+            ]);
         }
 
         elseif(empty($request->area_id) && !empty($request->genre_id) && !empty($request->name)) {
             $shops = Shop::where('name', 'LIKE', "%{$request->name}%")->with('genres')
             ->whereHas('genres', function ($query) use ($request){
             $query->where('genre_id', $request->genre_id);})->get();
-            return view('index')->with(['shops' => $shops, 'prefs' => $prefs]);
+            return view('index')->with([
+                'shops' => $shops,
+                'prefs' => $prefs,
+                'genres' => $genres,
+            ]);
         }
 
         elseif(!empty($request->area_id) && !empty($request->genre_id) && !empty($request->name)) {
@@ -149,12 +175,20 @@ class SearchController extends Controller
             ])->with('genres')
             ->whereHas('genres', function ($query) use ($request){
             $query->where('genre_id', $request->genre_id);})->get();
-            return view('index')->with(['shops' => $shops, 'prefs' => $prefs]);
+            return view('index')->with([
+                'shops' => $shops,
+                'prefs' => $prefs,
+                'genres' => $genres,
+            ]);
         }
 
         else {
             $shops = Shop::get();
-            return view('index')->with(['shops' => $shops, 'prefs' => $prefs]);
+            return view('index')->with([
+                'shops' => $shops,
+                'prefs' => $prefs,
+                'genres' => $genres,
+            ]);
         }
 
         // elseif(empty($request->area_id) && empty($request->genre_id) && empty($request->name)) {
