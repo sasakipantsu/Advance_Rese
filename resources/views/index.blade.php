@@ -79,7 +79,7 @@
 
                         {{-- 地域検索 --}}
                         <select name="area_id" class="py-2 text-sm rounded-md">
-                                <option value=" " selected>all area</option>
+                                <option value="0" selected>all area</option>
                             <optgroup label="北海道">
                                 <option value="1">北海道</option>
                             </optgroup>
@@ -152,16 +152,16 @@
                         </select>
 
                         {{-- ジャンル検索 --}}
-                        <select name="genre_name" class="py-2 text-sm rounded-md">
-                            <option value=" " selected>All genre</option>
-                            <option value="寿司">寿司</option>
-                            <option value="焼肉">焼肉</option>
-                            <option value="イタリアン">イタリアン</option>
-                            <option value="居酒屋">居酒屋</option>
-                            <option value="ラーメン">ラーメン</option>
-                            <option value="フレンチ">フレンチ</option>
-                            <option value="中華">中華</option>
-                            <option value="カレー">カレー</option>
+                        <select name="genre_id" class="py-2 text-sm rounded-md">
+                            <option value="0" selected>All genre</option>
+                            <option value="2">寿司</option>
+                            <option value="3">焼肉</option>
+                            <option value="4">イタリアン</option>
+                            <option value="5">居酒屋</option>
+                            <option value="6">ラーメン</option>
+                            <option value="7">フレンチ</option>
+                            <option value="8">中華</option>
+                            <option value="9">カレー</option>
                         </select>
 
                         {{-- 名前検索 --}}
@@ -181,58 +181,60 @@
             {{-- 店舗カード --}}
             <div class="flex justify-evenly flex-wrap">
 
-                {{-- @if(!empty($message))
+                @if(!empty($message))
                     <div class="alert alert-primary" role="alert">{{ $message}}</div>
-                @endif --}}
+                @endif
 
-                @foreach ($shops as $shop)
-                    <div class="w-52 shadow-md mb-5">
-                        <div>
-                            <img src="{{ $shop->img_url }}" alt="サンプル画像" class="w-full h-32 rounded-t-lg">
-                        </div>
-                        <div class="p-4 bg-white rounded-b-lg">
-                            <h2 class="font-bold pb-2">{{ $shop->name }}</h2>
-                            <div class="flex">
-                                <p class="text-xs pb-3">#{{ $shop->area->name }} </p>
-                                @foreach($shop->genres as $genre)
-                                <p class="text-xs pb-3 pl-4">#{{ $genre->genre_name }} </p>
-                                @endforeach
+                @isset($shops)
+                    @foreach ($shops as $shop)
+                        <div class="w-52 shadow-md mb-5">
+                            <div>
+                                <img src="{{ $shop->img_url }}" alt="サンプル画像" class="w-full h-32 rounded-t-lg">
                             </div>
+                            <div class="p-4 bg-white rounded-b-lg">
+                                <h2 class="font-bold pb-2">{{ $shop->name }}</h2>
+                                <div class="flex">
+                                    <p class="text-xs pb-3">#{{ $shop->area->name }} </p>
+                                    @foreach($shop->genres as $genre)
+                                    <p class="text-xs pb-3 pl-4">#{{ $genre->genre_name }} </p>
+                                    @endforeach
+                                </div>
 
-                            <div class="flex justify-between">
-                                <form action="/detail/{{ $shop->id }}" method="GET">
-                                    @csrf
-                                    <button type="submit" class="text-xs bg-blue-600 text-white px-5 py-1 rounded transition duration-200 hover:bg-blue-400">詳しく見る</button>
-                                </form>
+                                <div class="flex justify-between">
+                                    <form action="/detail/{{ $shop->id }}" method="GET">
+                                        @csrf
+                                        <button type="submit" class="text-xs bg-blue-600 text-white px-5 py-1 rounded transition duration-200 hover:bg-blue-400">詳しく見る</button>
+                                    </form>
 
-                                @auth
-                                    @if($shop->users()->where('user_id', Auth::id())->exists())
-                                        <form action="{{ route('favorite_delete', $shop) }}" method="POST">
-                                            @csrf
+                                    @auth
+                                        @if($shop->users()->where('user_id', Auth::id())->exists())
+                                            <form action="{{ route('favorite_delete', $shop) }}" method="POST">
+                                                @csrf
 
-                                            <button type="submit">
-                                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="red" viewBox="0 0 24 24">
-                                                <path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
-                                                </svg>
-                                            </button>
-                                        </form>
-                                    @else
-                                        <form action="{{ route('favorite', $shop) }}" method="POST">
-                                            @csrf
+                                                <button type="submit">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="red" viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                                                    </svg>
+                                                </button>
+                                            </form>
+                                        @else
+                                            <form action="{{ route('favorite', $shop) }}" method="POST">
+                                                @csrf
 
-                                            <button type="submit">
-                                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="gray" viewBox="0 0 24 24">
-                                                <path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
-                                                </svg>
-                                            </button>
-                                        </form>
-                                    @endif
-                                @endauth
+                                                <button type="submit">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="gray" viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                                                    </svg>
+                                                </button>
+                                            </form>
+                                        @endif
+                                    @endauth
+                                </div>
+
                             </div>
-
                         </div>
-                    </div>
-                @endforeach
+                    @endforeach
+                @endisset
             </div>
         </div>
     </div>

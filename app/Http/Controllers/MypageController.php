@@ -16,9 +16,9 @@ class MypageController extends Controller
         $my_reservations = Reservation::where('user_id', Auth::id())->get();
         $shops = Auth::user()->shops;
 
-        if ($my_reservations === null) {
-            return redirect('mypage')->with('flash_message', '君たち付き合っちゃいなよ！！');
-        }
+        // if ($my_reservations === 0){
+        //     return redirect('mypage')->with('flash_message', '君たち付き合っちゃいなよ！！');
+        // }
         // dd($my_reservations);
 
         return view('my_page', ['shops' => $shops, 'my_reservations' => $my_reservations]);

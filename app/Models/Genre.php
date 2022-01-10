@@ -17,4 +17,9 @@ class Genre extends Model
     {
         return $this->belongsToMany(Shop::class)->withTimestamps();
     }
+
+    public function shops()
+    {
+        return $this->hasMany(Shop::class);
+    }
 }

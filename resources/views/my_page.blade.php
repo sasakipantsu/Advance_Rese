@@ -21,15 +21,11 @@
 
             <h2 class="font-bold pb-4 pt-20">予約状況</h2>
 
-            {{-- @if(empty($my_reservations))
-                <div class="alert alert-primary" role="alert">予約はねーよ！！</div>
-            @endif --}}
-
-            @if (session('flash_message'))
-                <div class="flash_message bg-success text-center py-3 my-0">
+            {{-- @if (session('flash_message'))
+                <div>
                     {{ session('flash_message') }}
                 </div>
-            @endif
+            @endif --}}
 
             @foreach ($my_reservations as $my_reservation)
                 <div class="py-6 px-5 text-sm bg-blue-600 text-white mb-4 rounded shadow-md">
