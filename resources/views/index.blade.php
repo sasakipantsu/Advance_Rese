@@ -106,13 +106,18 @@
                             <input type="search" name="name" class="w-1/3 py-2 text-sm rounded-md relative" placeholder="Search..." autocomplete="off">
 
                             <button type="submit" class="py-2 px-2 rounded-md text-gray-500 absolute top-0 right-0 ">
-                                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" class="w-6 h-6"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" class="w-6 h-6 bg-white"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
                             </button>
                         </span>
                     </form>
 
                 </div>
 
+            </div>
+
+             {{-- ページネーション --}}
+            <div class="mb-4">
+                {{ $shops->appends(request()->query())->links() }}
             </div>
 
             {{-- 店舗カード --}}
@@ -175,10 +180,6 @@
                 {{-- @endisset --}}
             </div>
 
-            {{-- ページネーション --}}
-            <div class="mt-8">
-                {{ $shops->appends(request()->query())->links() }}
-            </div>
         </div>
     </div>
 

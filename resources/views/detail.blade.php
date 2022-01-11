@@ -72,27 +72,10 @@
                             {{-- <div class="py-4">
                                 <input type="time" name="time" class="block h-9 w-full text-sm rounded-md" required>
                             </div> --}}
-                            <select name="total_number" id="" class="h-9 w-full text-sm mb-5 rounded-md">
-                                <option value="1">1人</option>
-                                <option value="2">2人</option>
-                                <option value="3">3人</option>
-                                <option value="4">4人</option>
-                                <option value="5">5人</option>
-                                <option value="6">6人</option>
-                                <option value="7">7人</option>
-                                <option value="8">8人</option>
-                                <option value="9">9人</option>
-                                <option value="10">10人</option>
-                                <option value="11">11人</option>
-                                <option value="12">12人</option>
-                                <option value="13">13人</option>
-                                <option value="14">14人</option>
-                                <option value="15">15人</option>
-                                <option value="16">16人</option>
-                                <option value="17">17人</option>
-                                <option value="18">18人</option>
-                                <option value="19">19人</option>
-                                <option value="20">20人</option>
+                            <select name="total_number" class="h-9 w-full text-sm mb-5 rounded-md">
+                                @for ($i = 1; $i <= 20; $i++)
+                                    <option value="{{ $i }}">{{ $i }}人</option>
+                                @endfor
                             </select>
                         </div>
 
