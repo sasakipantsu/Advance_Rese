@@ -143,6 +143,7 @@
                                         <button type="submit" class="text-xs bg-blue-600 text-white px-5 py-1 rounded transition duration-200 hover:bg-blue-400">詳しく見る</button>
                                     </form>
 
+                                    {{-- お気に入り機能 --}}
                                     @auth
                                         @if($shop->users()->where('user_id', Auth::id())->exists())
                                             <form action="{{ route('favorite_delete', $shop) }}" method="POST">

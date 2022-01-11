@@ -31,4 +31,12 @@ class MypageController extends Controller
 
         return redirect('mypage');
     }
+
+    public function mypage_delete(Shop $shop)
+    {
+        // dd($shop->all());
+        $shop->users()->detach(Auth::id());
+
+        return redirect('mypage');
+    }
 }

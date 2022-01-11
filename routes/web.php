@@ -42,10 +42,11 @@ require __DIR__.'/auth.php';
 
     // 予約
     Route::post('/reservation',  [ReservationController::class, 'reservation'])->name('reservation');
-    Route::post('/reservation/delete',  [MypageController::class, 'delete'])->name('reservation_delete');
 
     // マイページ
     Route::get('/mypage',  [MypageController::class, 'mypage']);
+    Route::post('/reservation/delete',  [MypageController::class, 'delete'])->name('reservation_delete');
+    Route::post('/{shop}/favorite/delete', [MypageController::class, 'mypage_delete'])->name('favorite_delete');
 
 
 // });
