@@ -13,8 +13,8 @@ class MypageController extends Controller
 {
     public function mypage()
     {
-        $my_reservations = Reservation::where('user_id', Auth::id())->get();
-        $shops = Auth::user()->shops;
+        $my_reservations = Reservation::where('user_id', Auth::id())->paginate(2, ["*"], 'reservationpage');
+        $shops = Auth::user()->shops()->paginate(6, ["*"], 'shoppage');
 
         // if ($my_reservations === 0){
         //     return redirect('mypage')->with('flash_message', '君たち付き合っちゃいなよ！！');

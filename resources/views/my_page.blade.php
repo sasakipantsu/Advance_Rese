@@ -19,13 +19,18 @@
         {{-- 予約状況 --}}
         <div class="w-2/6">
 
-            <h2 class="font-bold pb-4 pt-20">予約状況</h2>
+            <h2 class="font-bold pb-4 pt-12">予約状況</h2>
 
             {{-- @if (session('flash_message'))
                 <div>
                     {{ session('flash_message') }}
                 </div>
             @endif --}}
+
+            {{-- ページネーション --}}
+            <div class="mb-4">
+                {{ $my_reservations->appends(request()->query())->links() }}
+            </div>
 
             @foreach ($my_reservations as $my_reservation)
                 <div class="py-6 px-5 text-sm bg-blue-600 text-white mb-4 rounded shadow-md">
@@ -69,13 +74,22 @@
                     </form>
                 </div>
             @endforeach
+
+
+
         </div>
 
         {{-- お気に入り店舗 --}}
         <div class="w-3/5">
-            <h2 class="text-2xl font-bold py-4">{{ Auth::user()->name }}さん</h2>
-            <h2 class="font-bold py-4">お気に入り店舗</h2>
+            <h2 class="text-2xl pl-6 font-bold">{{ Auth::user()->name }}さん</h2>
+            <h2 class="font-bold pl-6 py-4">お気に入り店舗</h2>
 
+            {{-- ページネーション --}}
+            <div class="mb-4 px-6">
+                {{ $shops->appends(request()->query())->links() }}
+            </div>
+
+            {{-- 店舗カード --}}
             <div class="flex justify-evenly flex-wrap">
 
                 @foreach ($shops as $shop)
