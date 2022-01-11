@@ -52,12 +52,12 @@
                         </tr>
                         <tr class="h-8">
                             <th class="w-1/3"> Date</th>
-                            <td class="pl-8">{{ $my_reservation->start_at }}</td>
+                            <td class="pl-8">{{ $my_reservation->start_at->format('Y.m.d') }}</td>
                         </tr>
-                        {{-- <tr class="h-8">
+                        <tr class="h-8">
                             <th class="w-1/3"> Time</th>
-                            <td class="pl-8">{{ $my_reservation->time }}</td>
-                        </tr> --}}
+                            <td class="pl-8">{{ $my_reservation->start_at->format('H:i') }}</td>
+                        </tr>
                         <tr class="h-8">
                             <th class="w-1/3"> Number</th>
                             <td class="pl-8">{{ $my_reservation->total_number }}人</td>

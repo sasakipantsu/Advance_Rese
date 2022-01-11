@@ -9,6 +9,8 @@ class Reservation extends Model
 {
     use HasFactory;
 
+    protected $dates = ['start_at'];
+
     protected $fillable = [
         'start_at',
         'total_number',
