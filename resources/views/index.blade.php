@@ -122,7 +122,7 @@
                     <div class="alert alert-primary" role="alert">{{ $message}}</div>
                 @endif
 
-                @isset($shops)
+                {{-- @isset($shops) --}}
                     @foreach ($shops as $shop)
                         <div class="w-52 shadow-md mb-5">
                             <div>
@@ -172,7 +172,12 @@
                             </div>
                         </div>
                     @endforeach
-                @endisset
+                {{-- @endisset --}}
+            </div>
+
+            {{-- ページネーション --}}
+            <div class="mt-8">
+                {{ $shops->appends(request()->query())->links() }}
             </div>
         </div>
     </div>

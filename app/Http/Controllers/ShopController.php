@@ -13,7 +13,7 @@ class ShopController extends Controller
     {
         $prefs = Area::get();
         $genres = Genre::get();
-        $shops = Shop::with('genres')->get();
+        $shops = Shop::with('genres')->paginate(10);
         // dd($shops);
         return view('index', [
             'shops' => $shops,
