@@ -106,7 +106,7 @@ class SearchController extends Controller
 
 
         if(!empty($request->area_id) && empty($request->genre_id) && empty($request->name)) {
-            $shops = $query->where('area_id', $request->area_id)->get();
+            $shops = $query->where('area_id', $request->area_id)->paginate(10);
             return view('index')->with([
                 'shops' => $shops,
                 'prefs' => $prefs,
@@ -117,7 +117,7 @@ class SearchController extends Controller
         elseif(empty($request->area_id) && !empty($request->genre_id) && empty($request->name)) {
             $shops = Shop::with('genres')
             ->whereHas('genres', function ($query) use ($request){
-            $query->where('genre_id', $request->genre_id);})->get();
+            $query->where('genre_id', $request->genre_id);})->paginate(10);
             return view('index')->with([
                 'shops' => $shops,
                 'prefs' => $prefs,
@@ -126,7 +126,7 @@ class SearchController extends Controller
         }
 
         elseif(empty($request->area_id) && empty($request->genre_id) && !empty($request->name)) {
-            $shops = $query->where('name', 'LIKE', "%{$request->name}%")->get();
+            $shops = $query->where('name', 'LIKE', "%{$request->name}%")->paginate(10);
             return view('index')->with([
                 'shops' => $shops,
                 'prefs' => $prefs,
@@ -137,7 +137,7 @@ class SearchController extends Controller
         elseif(!empty($request->area_id) && !empty($request->genre_id) && empty($request->name)) {
             $shops = Shop::where('area_id', $request->area_id)->with('genres')
             ->whereHas('genres', function ($query) use ($request){
-            $query->where('genre_id', $request->genre_id);})->get();
+            $query->where('genre_id', $request->genre_id);})->paginate(10);
             return view('index')->with([
                 'shops' => $shops,
                 'prefs' => $prefs,
@@ -149,7 +149,7 @@ class SearchController extends Controller
             $shops = $query->where([
                 ['area_id', $request->area_id],
                 ['name', 'LIKE', "%{$request->name}%"],
-            ])->get();
+            ])->paginate(10);
             return view('index')->with([
                 'shops' => $shops,
                 'prefs' => $prefs,
@@ -160,7 +160,7 @@ class SearchController extends Controller
         elseif(empty($request->area_id) && !empty($request->genre_id) && !empty($request->name)) {
             $shops = Shop::where('name', 'LIKE', "%{$request->name}%")->with('genres')
             ->whereHas('genres', function ($query) use ($request){
-            $query->where('genre_id', $request->genre_id);})->get();
+            $query->where('genre_id', $request->genre_id);})->paginate(10);
             return view('index')->with([
                 'shops' => $shops,
                 'prefs' => $prefs,
@@ -174,7 +174,7 @@ class SearchController extends Controller
                 ['name', 'LIKE', "%{$request->name}%"],
             ])->with('genres')
             ->whereHas('genres', function ($query) use ($request){
-            $query->where('genre_id', $request->genre_id);})->get();
+            $query->where('genre_id', $request->genre_id);})->paginate(10);
             return view('index')->with([
                 'shops' => $shops,
                 'prefs' => $prefs,
@@ -183,7 +183,7 @@ class SearchController extends Controller
         }
 
         else {
-            $shops = Shop::get();
+            $shops = Shop::paginate(10);
             return view('index')->with([
                 'shops' => $shops,
                 'prefs' => $prefs,
