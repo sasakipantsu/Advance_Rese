@@ -114,7 +114,7 @@
 
                                 {{-- お気に入り機能 --}}
                                 @if($shop->users()->where('user_id', Auth::id())->exists())
-                                    <form action="{{ route('favorite_delete', $shop) }}" method="POST">
+                                    <form action="{{ route('mypage_delete', $shop) }}" method="POST">
                                         @csrf
 
                                         <button type="submit">

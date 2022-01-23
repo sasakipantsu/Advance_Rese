@@ -171,6 +171,7 @@
                                                 </button>
                                             </form>
                                         @endif
+
                                     @endauth
                                 </div>
 
@@ -179,7 +180,6 @@
                     @endforeach
                 {{-- @endisset --}}
             </div>
-
         </div>
     </div>
 

@@ -10,8 +10,10 @@
         "fusic/seaaaaarch": "^0.9.0",
         "guzzlehttp/guzzle": "^7.0.1",
         "laravel/framework": "^8.65",
+        "laravel/jetstream": "^2.6",
         "laravel/sanctum": "^2.11",
         "laravel/tinker": "^2.5",
+        "livewire/livewire": "^2.5",
         "nesbot/carbon": "^2.31"
     },
     "require-dev": {

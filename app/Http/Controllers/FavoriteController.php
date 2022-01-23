@@ -19,7 +19,7 @@ class FavoriteController extends Controller
 
 
 
-    public function delete(Shop $shop)
+    public function favorite_delete(Shop $shop)
     {
         // dd($shop->all());
         $shop->users()->detach(Auth::id());

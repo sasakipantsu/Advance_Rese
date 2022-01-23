@@ -34,21 +34,22 @@ Route::get('/dashboard', function () {
 
 require __DIR__.'/auth.php';
 
-// Route::group(['middleware' => 'auth'], function () {
+Route::group(['middleware' => 'auth'], function () {
 
     // お気に入り
     Route::post('/{shop}/favorite', [FavoriteController::class, 'favorite'])->name('favorite');
-    Route::post('/{shop}/favorite/delete', [FavoriteController::class, 'delete'])->name('favorite_delete');
+    Route::post('/{shop}/favorite/delete', [FavoriteController::class, 'favorite_delete'])->name('favorite_delete');
 
     // 予約
+    Route::get('/reservation',  [ReservationController::class, 'reservation'])->name('reservation');
     Route::post('/reservation',  [ReservationController::class, 'reservation'])->name('reservation');
 
     // マイページ
     Route::get('/mypage',  [MypageController::class, 'mypage']);
     Route::post('/reservation/delete',  [MypageController::class, 'delete'])->name('reservation_delete');
-    Route::post('/{shop}/favorite/delete', [MypageController::class, 'mypage_delete'])->name('favorite_delete');
+    Route::post('/{shop}/favorite/mypage_delete', [MypageController::class, 'mypage_delete'])->name('mypage_delete');
 
 
-// });
+});
 
 
