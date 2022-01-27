@@ -4,6 +4,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Domains\Blog\Models\Shop_user;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+
 
 class Shop extends Model
 {
@@ -34,6 +37,4 @@ class Shop extends Model
     {
         return $this->belongsToMany(User::class)->withTimestamps();
     }
-
-
 }

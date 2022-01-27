@@ -7,9 +7,6 @@ use App\Http\Requests\Auth\LoginRequest;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\Models\Shop;
-use App\Models\Area;
-use App\Models\Genre;
 
 
 class AuthenticatedSessionController extends Controller
@@ -39,15 +36,7 @@ class AuthenticatedSessionController extends Controller
         // return redirect()->intended(RouteServiceProvider::HOME);
         // return view('members_index');
 
-        $prefs = Area::get();
-        $genres = Genre::get();
-        $shops = Shop::with('genres')->paginate(10);
-        // dd($shops);
-        return view('index', [
-            'shops' => $shops,
-            'prefs' => $prefs,
-            'genres' => $genres,
-        ]);
+         return redirect('/');
     }
 
     /**

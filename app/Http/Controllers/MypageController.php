@@ -13,7 +13,7 @@ class MypageController extends Controller
 {
     public function mypage()
     {
-        
+
         $my_reservations = Reservation::where('user_id', Auth::id())->paginate(2, ["*"], 'reservationpage');
         $shops = Auth::user()->shops()->paginate(6, ["*"], 'shoppage');
 
@@ -29,14 +29,6 @@ class MypageController extends Controller
     {
         $my_reservations = Reservation::find($request->id);
         $my_reservations->delete();
-
-        return redirect('mypage');
-    }
-
-    public function mypage_delete(Shop $shop)
-    {
-        // dd($shop->all());
-        $shop->users()->detach(Auth::id());
 
         return redirect('mypage');
     }

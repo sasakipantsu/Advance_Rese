@@ -8,10 +8,11 @@ use App\Models\Shop;
 
 class Favorite extends Component
 {
-    public $shops;
+    public $shop;
 
-    public function mount(){
-        $this->shops = Shop::all();
+    public function mount(Shop $shop)
+    {
+        $this->shop = $shop;
     }
 
     public function favorite(Shop $shop)

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateShop_userTable extends Migration
+class CreateShopuserTable extends Migration
 {
     /**
      * Run the migrations.
@@ -15,9 +15,13 @@ class CreateShop_userTable extends Migration
     {
         Schema::create('shop_user', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('shop_id');
 
-            $table->foreignId('user_id')->constrained()->cascadeOnDelete();
-            $table->foreignId('shop_id')->constrained()->cascadeOnDelete();
+            // $table->foreignId('user_id')->constrained()->cascadeOnDelete();
+            // $table->foreignId('shop_id')->constrained()->cascadeOnDelete();
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('shop_id')->references('id')->on('shops')->onDelete('cascade');
             $table->unique(['user_id', 'shop_id']);
             $table->timestamps();
         });

@@ -7,6 +7,8 @@ use App\Http\Controllers\MypageController;
 use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\FavoriteController;
 use App\Http\Controllers\SearchController;
+use App\Http\Livewire\FavoriteComponent;
+
 
 
 
@@ -25,20 +27,16 @@ use App\Http\Controllers\SearchController;
 // 飲食店ページ
 Route::get('/',  [ShopController::class, 'index']);
 Route::get('/detail/{shop_id}',  [ShopController::class, 'detail']);
+Route::get('/search',  [SearchController::class, 'search']);
 Route::post('/search',  [SearchController::class, 'search']);
-
-// ログインページ
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
 
 require __DIR__.'/auth.php';
 
 Route::group(['middleware' => 'auth'], function () {
 
     // お気に入り
-    Route::post('/{shop}/favorite', [FavoriteController::class, 'favorite'])->name('favorite');
-    Route::post('/{shop}/favorite/delete', [FavoriteController::class, 'favorite_delete'])->name('favorite_delete');
+    Route::post('/{shop}/favorite', [FavoriteComponent::class, 'favorite'])->name('favorite');
+    Route::post('/{shop}/favorite_delete', [FavoriteComponent::class, 'favorite_delete'])->name('favorite_delete');
 
     // 予約
     Route::get('/reservation',  [ReservationController::class, 'reservation'])->name('reservation');
@@ -47,7 +45,6 @@ Route::group(['middleware' => 'auth'], function () {
     // マイページ
     Route::get('/mypage',  [MypageController::class, 'mypage']);
     Route::post('/reservation/delete',  [MypageController::class, 'delete'])->name('reservation_delete');
-    Route::post('/{shop}/favorite/mypage_delete', [MypageController::class, 'mypage_delete'])->name('mypage_delete');
 
 
 });
