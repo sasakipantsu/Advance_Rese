@@ -15,9 +15,11 @@ class CreateGenreShopTable extends Migration
     {
         Schema::create('genre_shop', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('shop_id');
+            $table->unsignedBigInteger('genre_id');
 
-            $table->foreignId('shop_id')->constrained();
-            $table->foreignId('genre_id')->constrained();
+            $table->foreign('shop_id')->references('id')->on('shops');
+            $table->foreign('genre_id')->references('id')->on('genres');
             $table->timestamps();
         });
     }

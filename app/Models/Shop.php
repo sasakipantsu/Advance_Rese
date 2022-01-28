@@ -23,11 +23,6 @@ class Shop extends Model
         return $this->belongsTo(Area::class);
     }
 
-    public function genre()
-    {
-        return $this->belongsTo(Genre::class);
-    }
-
     public function genres()
     {
         return $this->belongsToMany(Genre::class)->withTimestamps();

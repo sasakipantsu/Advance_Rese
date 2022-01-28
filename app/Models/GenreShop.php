@@ -10,7 +10,8 @@ class GenreShop extends Model
     use HasFactory;
 
     protected $fillable = [
-        'name',
+        'shop_id',
+        'genre_id',
     ];
 
 }
