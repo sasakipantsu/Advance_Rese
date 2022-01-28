@@ -25,10 +25,18 @@ class MypageController extends Controller
         return view('my_page', ['shops' => $shops, 'my_reservations' => $my_reservations]);
     }
 
-    public function delete(Request $request)
+    public function reservation_delete(Request $request)
     {
         $my_reservations = Reservation::find($request->id);
         $my_reservations->delete();
+
+        return redirect('mypage');
+    }
+
+    public function mypage_favorite_delete(Shop $shop)
+    {
+        // dd($shop->all());
+        $shop->users()->detach(Auth::id());
 
         return redirect('mypage');
     }

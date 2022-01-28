@@ -44,7 +44,8 @@ Route::group(['middleware' => 'auth'], function () {
 
     // マイページ
     Route::get('/mypage',  [MypageController::class, 'mypage']);
-    Route::post('/reservation/delete',  [MypageController::class, 'delete'])->name('reservation_delete');
+    Route::post('/reservation_delete',  [MypageController::class, 'reservation_delete'])->name('reservation_delete');
+    Route::post('/{shop}/favorite/mypage_favorite_delete', [MypageController::class, 'mypage_favorite_delete'])->name('mypage_favorite_delete');
 
 
 });
