@@ -7,7 +7,7 @@
 
     <div class="relative min-h-screen md:flex">
 
-        <!-- mobile menu bar -->
+        {{-- <!-- mobile menu bar -->
         <div class="bg-blue-500 text-gray-100 flex justify-between md:hidden">
 
             <!-- logo -->
@@ -19,7 +19,7 @@
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h8m-8 6h16" />
                 </svg>
             </button>
-        </div>
+        </div> --}}
 
         <!-- サイドバー -->
         <div class="sidebar bg-blue-600 text-blue-100 w-1/5 space-y-6 py-7 px-2 absolute inset-y-0 left-0 transform -translate-x-full md:relative md:translate-x-0 transition duration-200 ease-in-out">
