@@ -16,5 +16,28 @@ class Favorite extends Model
 
     protected $table = 'shop_user';
 
+
+    // public function user()
+    // {
+    //     return $this->belongsTo(User::class);
+    // }
+    // public function shop()
+    // {
+    //     return $this->belongsTo(Shop::class);
+    // }
+    //いいねが既にされているかを確認
+    public function favorite_exist($id, $shop_id)
+    {
+        $exist = Favorite::where('user_id', $id)->where('shop_id', $shop_id)->get();
+
+        // レコード（$exist）が存在するなら
+        if (!$exist->isEmpty()) {
+            return true;
+        } else {
+        // レコード（$exist）が存在しないなら
+            return false;
+        }
+    }
+
 }
 

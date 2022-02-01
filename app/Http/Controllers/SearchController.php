@@ -7,6 +7,7 @@ use App\Http\Requests\SearchRequest;
 use App\Models\Shop;
 use App\Models\Area;
 use App\Models\Genre;
+use App\Models\Favorite;
 
 class SearchController extends Controller
 {
@@ -15,6 +16,7 @@ class SearchController extends Controller
         $prefs = Area::get();
         $genres = Genre::get();
         $query = Shop::query();
+        $favorite_model = new Favorite;
 
 
         if(!empty($request->area_id) && empty($request->genre_id) && empty($request->name)) {
@@ -67,6 +69,7 @@ class SearchController extends Controller
                 'shops' => $shops,
                 'prefs' => $prefs,
                 'genres' => $genres,
+                'favorite_model' => $favorite_model,
             ]);
     }
 

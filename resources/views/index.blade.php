@@ -1,3 +1,9 @@
+<style>
+    .love {
+    color: red !important;
+    }
+</style>
+
 @extends('layouts.default')
 
 @section('title', '店舗一覧 - Rese')
@@ -150,7 +156,19 @@
 
                                     {{-- お気に入り機能 --}}
                                     @auth
-                                        @livewire('favorite-component', ['shop' => $shop])
+                                        @if($favorite_model->favorite_exist(Auth::user()->id,$shop->id))
+                                            <p class="mt-2">
+                                                <button class="js-favorite-toggle love" data-shopid="{{ $shop->id }}">
+                                                    <i class="fas fa-heart h-6 w-6 py-1"></i>
+                                                </button>
+                                            </p>
+                                        @else
+                                            <p class="mt-2">
+                                                <button class="js-favorite-toggle" data-shopid="{{ $shop->id }}">
+                                                    <i class="fas fa-heart h-6 w-6 py-1"></i>
+                                                </button>
+                                            </p>
+                                        @endif​
                                     @endauth
                                 </div>
 

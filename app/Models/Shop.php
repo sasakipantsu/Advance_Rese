@@ -32,4 +32,9 @@ class Shop extends Model
     {
         return $this->belongsToMany(User::class)->withTimestamps();
     }
+
+    // public function favorites()
+    // {
+    //     return $this->hasMany(Favorite::class);
+    // }
 }

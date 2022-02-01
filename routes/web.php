@@ -35,8 +35,9 @@ require __DIR__.'/auth.php';
 Route::group(['middleware' => 'auth'], function () {
 
     // お気に入り
-    Route::post('/{shop}/favorite', [FavoriteComponent::class, 'favorite'])->name('favorite');
-    Route::post('/{shop}/favorite_delete', [FavoriteComponent::class, 'favorite_delete'])->name('favorite_delete');
+    Route::post('/ajax_favorite', [FavoriteController::class, 'ajax_favorite']);
+    // Route::post('/{shop}/favorite', [FavoriteComponent::class, 'favorite'])->name('favorite');
+    // Route::post('/{shop}/favorite_delete', [FavoriteComponent::class, 'favorite_delete'])->name('favorite_delete');
 
     // 予約
     Route::get('/reservation',  [ReservationController::class, 'reservation'])->name('reservation');

@@ -1,3 +1,9 @@
+<style>
+    .love {
+    color: red !important;
+    }
+</style>
+
 @extends('layouts.default')
 
 @section('title', 'マイページ - Rese')
@@ -45,7 +51,7 @@
                         @endif
                     </div>
 
-                    <table class="text-left">
+                    <table class="text-left text-white">
                         <tr class="h-8">
                             <th class="w-1/3">Shop</th>
                             <td class="pl-8">{{ $my_reservation->shop->name }}</td>
@@ -109,30 +115,22 @@
                             <div class="flex justify-between">
                                 <form action="/detail/{{ $shop->id }}" method="GET">
                                     @csrf
-                                    <button type="submit" class="text-xs bg-blue-600 text-white px-5 py-1 rounded transition duration-200 hover:bg-blue-400">詳しく見る</button>
+                                    <button type="submit" class="text-xs bg-blue-600 text-white mt-2 px-5 py-1 rounded transition duration-200 hover:bg-blue-400">詳しく見る</button>
                                 </form>
 
                                 {{-- お気に入り機能 --}}
-                                @if($shop->users()->where('user_id', Auth::id())->exists())
-                                    <form action="{{ route('mypage_favorite_delete', $shop) }}" method="POST">
-                                        @csrf
-
-                                        <button type="submit">
-                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="red" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
-                                            </svg>
+                                @if($favorite_model->favorite_exist(Auth::user()->id,$shop->id))
+                                    <p class="mt-2">
+                                        <button class="js-favorite-toggle love" data-shopid="{{ $shop->id }}">
+                                            <i class="fas fa-heart h-6 w-6 py-1"></i>
                                         </button>
-                                    </form>
+                                    </p>
                                 @else
-                                    <form action="{{ route('favorite', $shop) }}" method="POST">
-                                        @csrf
-
-                                        <button type="submit">
-                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="gray" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
-                                            </svg>
+                                    <p class="mt-2">
+                                        <button class="js-favorite-toggle" data-shopid="{{ $shop->id }}">
+                                            <i class="fas fa-heart h-6 w-6 py-1"></i>
                                         </button>
-                                    </form>
+                                    </p>
                                 @endif
                             </div>
                         </div>

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Reservation;
 use App\Models\Shop;
+use App\Models\Favorite;
 
 
 
@@ -16,13 +17,18 @@ class MypageController extends Controller
 
         $my_reservations = Reservation::where('user_id', Auth::id())->paginate(2, ["*"], 'reservationpage');
         $shops = Auth::user()->shops()->paginate(6, ["*"], 'shoppage');
+        $favorite_model = new Favorite;
 
         // if ($my_reservations === 0){
         //     return redirect('mypage')->with('flash_message', '君たち付き合っちゃいなよ！！');
         // }
         // dd($my_reservations);
 
-        return view('my_page', ['shops' => $shops, 'my_reservations' => $my_reservations]);
+        return view('my_page', [
+            'shops' => $shops,
+            'my_reservations' => $my_reservations,
+            'favorite_model' => $favorite_model,
+        ]);
     }
 
     public function reservation_delete(Request $request)
