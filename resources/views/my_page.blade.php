@@ -27,11 +27,9 @@
 
             <h2 class="font-bold pb-4 pt-12">予約状況</h2>
 
-            {{-- @if (session('flash_message'))
-                <div>
-                    {{ session('flash_message') }}
-                </div>
-            @endif --}}
+            @if ($my_reservations->isEmpty())
+                <p class="mt-8">現在予約状況はありません</p>
+            @endif
 
             {{-- ページネーション --}}
             <div class="mb-4">
@@ -89,6 +87,10 @@
         <div class="w-3/5">
             <h2 class="text-2xl pl-6 font-bold">{{ Auth::user()->name }}さん</h2>
             <h2 class="font-bold pl-6 py-4">お気に入り店舗</h2>
+
+            @if ($shops->isEmpty())
+                <p class="pl-6 mt-8">お気に入り店舗はありません</p>
+            @endif
 
             {{-- ページネーション --}}
             <div class="mb-4 px-6">

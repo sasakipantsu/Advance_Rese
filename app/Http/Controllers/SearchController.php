@@ -8,6 +8,7 @@ use App\Models\Shop;
 use App\Models\Area;
 use App\Models\Genre;
 use App\Models\Favorite;
+use Session;
 
 class SearchController extends Controller
 {
@@ -66,11 +67,11 @@ class SearchController extends Controller
         }
 
         return view('index')->with([
-                'shops' => $shops,
-                'prefs' => $prefs,
-                'genres' => $genres,
-                'favorite_model' => $favorite_model,
-            ]);
+            'shops' => $shops,
+            'prefs' => $prefs,
+            'genres' => $genres,
+            'favorite_model' => $favorite_model,
+        ]);
     }
 
 }

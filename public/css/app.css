@@ -7115,6 +7115,10 @@ select {
   margin-top: auto;
   margin-bottom: auto;
 }
+.my-0 {
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
 .ml-3 {
   margin-left: 0.75rem;
 }

@@ -129,9 +129,10 @@
             {{-- 店舗カード --}}
             <div class="flex justify-evenly flex-wrap">
 
-                @if(!empty($message))
-                    <div class="alert alert-primary" role="alert">{{ $message}}</div>
+                @if ($shops->isEmpty())
+                    <p>検索結果はありませんでした</p>
                 @endif
+
 
                 {{-- @isset($shops) --}}
                     @foreach ($shops as $shop)
