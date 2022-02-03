@@ -10,8 +10,9 @@ use App\Http\Requests\ReservationRequest;
 
 class ReservationController extends Controller
 {
-    public function reservation(Request $request)
+    public function reservation(ReservationRequest $request)
     {
+        dd($request);
         $reservation = new Reservation();
         $reservation->user_id = auth()->id();
         $reservation->shop_id = $request->shop_id;

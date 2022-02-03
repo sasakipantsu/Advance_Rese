@@ -25,7 +25,7 @@ class ReservationRequest extends FormRequest
     {
         return [
             'date' => ['required', 'integer'],
-            'time' => ['required', 'integer'],
+            // 'time' => ['required', 'integer'],
             'total_number' => ['required', 'integer'],
         ];
     }
@@ -33,8 +33,11 @@ class ReservationRequest extends FormRequest
     public function messages()
     {
         return [
+            'date.required' => '日付を入力してください',
             'date.integer' => '数値で入力してください',
-            'time.integer' => '数値で入力してください',
+            // 'time.required' => '時間を',
+            // 'time.integer' => '数値で入力してください',
+            'total_number.required' => '人数を入力してください',
             'total_number.integer' => '数値で入力してください',
         ];
     }

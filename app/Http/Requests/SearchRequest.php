@@ -31,7 +31,7 @@ class SearchRequest extends FormRequest
     public function messages()
     {
         return [
-            'name.max' => '255文字以下で入力してください',
+            'name.max' => '正しく入力してください',
         ];
     }
 }

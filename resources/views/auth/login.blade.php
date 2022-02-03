@@ -56,12 +56,6 @@
             </div>
 
             <div class="flex items-center justify-end mt-4">
-                {{-- @if (Route::has('password.request'))
-                    <a class="mr-2 underline text-sm text-blue-700 hover:text-blue-400" href="{{ route('password.request') }}">
-                        {{ __('パスワードを忘れた方はこちら') }}
-                    </a>
-                @endif --}}
-
                 <button class="text-xs bg-blue-700 text-white px-7 py-2 rounded transition duration-200 hover:bg-blue-400">
                     {{ __('ログイン') }}
                 </button>

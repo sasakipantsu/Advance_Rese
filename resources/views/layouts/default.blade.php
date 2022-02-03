@@ -11,12 +11,10 @@
     <script src="{{ asset('js/app.js') }}" defer></script>
 
     <title>@yield('title')</title>
-    @livewireStyles
 </head>
 <body class="bg-gray-100">
     @yield('content')
-    @livewireScripts
     <script src="{{ mix('js/_ajaxfavorite.js') }}"></script>
+    <script src="{{ mix('js/mobile-menu-button.js') }}"></script>
 </body>
-{{-- <script src="{{ mix('js/mobile-menu-button.js') }}"></script> --}}
 </html>

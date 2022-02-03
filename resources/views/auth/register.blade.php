@@ -56,7 +56,7 @@
 
             <!-- Password -->
             <div class="mt-4">
-                <x-label class="pl-10" for="password" :value="__('Password')" />
+                <x-label class="pl-10" for="password" :value="__('Password - 8文字以上で入力してください -')" />
 
                 <div class="flex">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mx-2 my-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -69,7 +69,7 @@
 
             <!-- Confirm Password -->
             <div class="mt-4">
-                <x-label class="pl-10" for="password_confirmation" :value="__('Confirm Password')" />
+                <x-label class="pl-10" for="password_confirmation" :value="__('Confirm Password - パスワード確認 -')" />
 
                 <div class="flex">
                     <div class="h-6 w-6 mx-2 my-auto"></div>

@@ -12,7 +12,7 @@ use Session;
 
 class SearchController extends Controller
 {
-    public function search(Request $request)
+    public function search(SearchRequest $request)
     {
         $prefs = Area::get();
         $genres = Genre::get();
