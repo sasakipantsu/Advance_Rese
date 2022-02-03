@@ -24,14 +24,14 @@ class ShopController extends Controller
             'genres' => $genres,
             'favorite_model' => $favorite_model,
         ];
-        // dd($shops);
+
         return view('index', $data);
     }
 
     public function detail(Request $request, $shop_id)
     {
         $shop = Shop::with('genres')->findOrFail($shop_id);
-        // dd($shop);
+        
         return view('detail', ['shop' => $shop]);
     }
 

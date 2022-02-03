@@ -87,11 +87,12 @@
                         <select name = "area_id" class="py-2 text-sm rounded-md">
                             <option value = "0" selected>all area</option>
                             @foreach($prefs as $pref)
-                                @if((!empty($request->area_id) && $request->area_id == $pref->id))
+                                {{-- @if(!empty($request->area_id) && $request->area_id == $pref->id)
                                     <option value = "{{ $pref->id }}" selected>{{ $pref->name }}</option>
                                 @else
                                     <option value = "{{ $pref->id }}">{{ $pref->name }}</option>
-                                @endif
+                                @endif --}}
+                                <option value="{{ $pref->id }}" @if(old('area_id') == $pref->id) selected @endif>{{ $pref->name }}</option>
                             @endforeach
                         </select>
 
@@ -99,11 +100,12 @@
                         <select name="genre_id" class="py-2 text-sm rounded-md">
                             <option value = "0" selected>All genre</option>
                             @foreach($genres as $genre)
-                                @if((!empty($request->genre_id) && $request->genre_id == $genre->id))
+                                {{-- @if(!empty($request->genre_id) && $request->genre_id == $genre->id)
                                     <option value = "{{ $genre->id }}" selected>{{ $genre->genre_name }}</option>
                                 @else
                                     <option value = "{{ $genre->id }}">{{ $genre->genre_name }}</option>
-                                @endif
+                                @endif --}}
+                                <option value="{{ $genre->id }}" @if(old('genre_id') == $genre->id) selected @endif>{{ $genre->genre_name }}</option>
                             @endforeach
                         </select>
 
@@ -123,7 +125,7 @@
 
              {{-- ページネーション --}}
             <div class="mb-4">
-                {{ $shops->appends(request()->query())->links() }}
+                {{ $shops->appends(request()->input())->links() }}
             </div>
 
             {{-- 店舗カード --}}

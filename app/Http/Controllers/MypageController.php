@@ -19,11 +19,6 @@ class MypageController extends Controller
         $shops = Auth::user()->shops()->paginate(6, ["*"], 'shoppage');
         $favorite_model = new Favorite;
 
-        // if ($my_reservations === 0){
-        //     return redirect('mypage')->with('flash_message', '君たち付き合っちゃいなよ！！');
-        // }
-        // dd($my_reservations);
-
         return view('my_page', [
             'shops' => $shops,
             'my_reservations' => $my_reservations,
@@ -35,14 +30,6 @@ class MypageController extends Controller
     {
         $my_reservations = Reservation::find($request->id);
         $my_reservations->delete();
-
-        return redirect('mypage');
-    }
-
-    public function mypage_favorite_delete(Shop $shop)
-    {
-        // dd($shop->all());
-        $shop->users()->detach(Auth::id());
 
         return redirect('mypage');
     }

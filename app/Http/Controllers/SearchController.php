@@ -19,7 +19,6 @@ class SearchController extends Controller
         $query = Shop::query();
         $favorite_model = new Favorite;
 
-
         if(!empty($request->area_id) && empty($request->genre_id) && empty($request->name)) {
             $shops = $query->where('area_id', $request->area_id)->paginate(10);
         }
@@ -65,6 +64,10 @@ class SearchController extends Controller
         else {
             $shops = Shop::paginate(10);
         }
+
+        // if ($request->session()->has('area_id', 'genre_id', 'name')) {
+        //     $data = $request->session()->all();
+        // }
 
         return view('index')->with([
             'shops' => $shops,
