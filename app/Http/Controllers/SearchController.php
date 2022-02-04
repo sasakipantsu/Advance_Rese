@@ -8,11 +8,10 @@ use App\Models\Shop;
 use App\Models\Area;
 use App\Models\Genre;
 use App\Models\Favorite;
-use Session;
 
 class SearchController extends Controller
 {
-    public function search(SearchRequest $request)
+    public function search(Request $request)
     {
         $prefs = Area::get();
         $genres = Genre::get();
@@ -64,10 +63,6 @@ class SearchController extends Controller
         else {
             $shops = Shop::paginate(10);
         }
-
-        // if ($request->session()->has('area_id', 'genre_id', 'name')) {
-        //     $data = $request->session()->all();
-        // }
 
         return view('index')->with([
             'shops' => $shops,

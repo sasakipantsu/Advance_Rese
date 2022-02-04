@@ -28,8 +28,8 @@ class MypageController extends Controller
 
     public function reservation_delete(Request $request)
     {
-        $my_reservations = Reservation::find($request->id);
-        $my_reservations->delete();
+        $my_reservation = Reservation::findOrFail($request->id);
+        $my_reservation->delete();
 
         return redirect('mypage');
     }

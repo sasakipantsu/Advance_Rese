@@ -17,9 +17,11 @@
     {{-- 予約完了カード --}}
     <div class="w-1/3 h-52 mx-auto text-center bg-white shadow-md rounded">
         <p class="pt-16 mb-5">ご予約ありがとうございます</p>
-        <button class="text-xs bg-blue-600 text-white px-5 py-1 rounded transition duration-200 hover:bg-blue-400">
-            <a href="/">戻る</a>
-        </button>
+        <a href="/">
+            <button class="text-xs bg-blue-600 text-white px-5 py-1 rounded transition duration-200 hover:bg-blue-400">
+                戻る
+            </button>
+        </a>
     </div>
 
 @endsection

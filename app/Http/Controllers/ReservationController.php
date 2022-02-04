@@ -10,15 +10,17 @@ use App\Http\Requests\ReservationRequest;
 
 class ReservationController extends Controller
 {
-    public function reservation(ReservationRequest $request)
+    public function reservation(Request $request)
     {
-        dd($request);
+        // dd($request);
         $reservation = new Reservation();
         $reservation->user_id = auth()->id();
         $reservation->shop_id = $request->shop_id;
         $reservation->start_at = $request->start_at;
         $reservation->total_number = $request->total_number;
         $reservation->save();
+
+        $request->session()->regenerateToken();
 
         return view('done');
     }

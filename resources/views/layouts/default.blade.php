@@ -7,7 +7,6 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/favorite.css') }}" rel="stylesheet" type="text/css">
     <script src="{{ asset('js/app.js') }}" defer></script>
 
     <title>@yield('title')</title>

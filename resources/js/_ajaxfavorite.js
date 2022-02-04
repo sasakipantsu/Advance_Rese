@@ -1,15 +1,16 @@
 $(function () {
     let favorite = $('.js-favorite-toggle');
-    let favoriteShopId;
 
     favorite.on('click', function () {
         let $this = $(this);
-        favoriteShopId = $this.data('shopid');
+        let favoriteShopId = $this.data('shopid');
+        
         $.ajaxSetup({
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             }
         });
+
         $.ajax({
             url: '/ajax_favorite',
             type: 'POST',

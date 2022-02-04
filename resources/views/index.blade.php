@@ -129,7 +129,7 @@
 
                 {{-- ページネーション --}}
                 <div class="mb-4">
-                    {{ $shops->appends(request()->input())->links() }}
+                    {{ $shops->appends(request()->input())->onEachSide(0)->links() }}
                 </div>
 
                 {{-- 店舗カード --}}

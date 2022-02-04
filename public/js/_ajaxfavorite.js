@@ -10929,10 +10929,9 @@ var __webpack_exports__ = {};
 /* provided dependency */ var $ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
 $(function () {
   var favorite = $('.js-favorite-toggle');
-  var favoriteShopId;
   favorite.on('click', function () {
     var $this = $(this);
-    favoriteShopId = $this.data('shopid');
+    var favoriteShopId = $this.data('shopid');
     $.ajaxSetup({
       headers: {
         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')

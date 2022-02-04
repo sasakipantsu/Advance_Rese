@@ -33,11 +33,11 @@
 
             {{-- ページネーション --}}
             <div class="mb-4">
-                {{ $my_reservations->appends(request()->query())->links() }}
+                {{ $my_reservations->appends(request()->query())->links('pagination::simple-tailwind') }}
             </div>
 
             @foreach ($my_reservations as $my_reservation)
-                <div class="py-6 px-5 text-sm bg-blue-600 text-white mb-4 rounded shadow-md">
+                <div id="my_reservation" class="py-6 px-5 text-sm bg-blue-600 text-white mb-4 rounded shadow-md">
 
                     <div class="h-10 flex items-center">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mx-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -72,8 +72,8 @@
                     <form action="{{ route('reservation_delete') }}" method="POST">
                         @csrf
                         <div class="text-right mr-10">
-                            <input type="hidden" name="id" value="{{ $my_reservation->id }}">
-                            <button type="submit" class="shadow-lg px-3 py-1 bg-blue-500 text-white font-semibold rounded  hover:bg-blue-400 hover:shadow-sm hover:translate-y-0.5 transform transition">削除</button>
+                            <input id="my_reservation-id" type="hidden" name="id" value="{{ $my_reservation->id }}">
+                            <button onclick="return confirm('削除してよろしいでしょうか？')" class="shadow-lg px-3 py-1 bg-blue-500 text-white font-semibold rounded  hover:bg-blue-400 hover:shadow-sm hover:translate-y-0.5 transform transition">削除</button>
                         </div>
                     </form>
                 </div>
@@ -94,7 +94,7 @@
 
             {{-- ページネーション --}}
             <div class="mb-4 px-6">
-                {{ $shops->appends(request()->query())->links() }}
+                {{ $shops->appends(request()->query())->onEachSide(0)->links() }}
             </div>
 
             {{-- 店舗カード --}}
