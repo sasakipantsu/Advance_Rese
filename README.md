@@ -15,7 +15,7 @@
 
 ## DEMOはこちら
 
-<img src="resources/demo/rese.gif" width="400">
+<img src="resources/gif/rese.gif" width="400">
 
 ## 開発環境
 
