@@ -15,13 +15,13 @@
 
 ## DEMOはこちら
 
-<img src="resource/demo/rese_test.gif" width="400">
+<img src="resource/demo/rese_small.gif" width="400">
 
 ## 開発環境
 
-PHP 7.4.21
-Laravel 8.78.1
-MySQL 5.7.34
+PHP 7.4.21  
+Laravel 8.78.1  
+MySQL 5.7.34  
 - [PHP](https://www.php.net/).
 - [Laravel](https://laravel.com/).
 - [MySQL](https://www.mysql.com/jp/).
