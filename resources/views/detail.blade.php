@@ -4,15 +4,6 @@
 
 @section('content')
 
-
-            {{-- ロゴ
-            <a href="#" class="text-white flex space-x-2 mb-12">
-                <svg class="h-8 w-8 rounded shadow-md bg-blue-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h8m-8 6h16" />
-                </svg>
-                <span class="text-2xl font-extrabold text-blue-600">Rese</span>
-            </a> --}}
-
     {{-- ロゴ --}}
     <div class="pl-28 mt-10">
         <a href="/" class="text-white flex space-x-2 mb-5">
@@ -69,9 +60,6 @@
                         <input type="hidden" name="shop_id" value="{{ $shop->id }}">
                         <div>
                             <input type="datetime-local" name="start_at" class="block h-9 w-full mb-4 text-sm rounded-md" required>
-                            {{-- <div class="py-4">
-                                <input type="time" name="time" class="block h-9 w-full text-sm rounded-md" required>
-                            </div> --}}
                             <select name="total_number" class="h-9 w-full text-sm mb-5 rounded-md">
                                 @for ($i = 1; $i <= 20; $i++)
                                     <option value="{{ $i }}">{{ $i }}人</option>
