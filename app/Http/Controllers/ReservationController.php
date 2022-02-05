@@ -6,17 +6,16 @@ use Illuminate\Http\Request;
 use App\Models\Reservation;
 use App\Models\Shop;
 use Illuminate\Support\Facades\Auth;
-use App\Http\Requests\ReservationRequest;
 
 class ReservationController extends Controller
 {
     public function reservation(Request $request)
     {
-        // dd($request);
+        $start_at = $request->date . $request->time;
         $reservation = new Reservation();
         $reservation->user_id = auth()->id();
         $reservation->shop_id = $request->shop_id;
-        $reservation->start_at = $request->start_at;
+        $reservation->start_at = $start_at;
         $reservation->total_number = $request->total_number;
         $reservation->save();
 

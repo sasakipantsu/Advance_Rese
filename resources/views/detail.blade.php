@@ -59,8 +59,9 @@
 
                         <input type="hidden" name="shop_id" value="{{ $shop->id }}">
                         <div>
-                            <input type="datetime-local" name="start_at" class="block h-9 w-full mb-4 text-sm rounded-md" required>
-                            <select name="total_number" class="h-9 w-full text-sm mb-5 rounded-md">
+                            <input id="date" type="date" name="date" class="block h-9 w-full mb-4 text-sm rounded-md" required>
+                            <input id="time" type="time" name="time" class="block h-9 w-full mb-4 text-sm rounded-md" required>
+                            <select id="total_number" name="total_number" class="h-9 w-full text-sm mb-5 rounded-md">
                                 @for ($i = 1; $i <= 20; $i++)
                                     <option value="{{ $i }}">{{ $i }}人</option>
                                 @endfor
@@ -68,30 +69,30 @@
                         </div>
 
                         {{-- 予約確認 --}}
-                        {{-- <div class="py-6 bg-blue-500 rounded-md">
+                        <div class="py-6 bg-blue-500 rounded-md">
                             <table class="w-full text-left text-white">
                                 <tr>
                                     <th class="w-1/3 pl-4">Shop</th>
                                     <td>{{ $shop->name }}</td>
                                 </tr>
                                 <tr>
-                                    <th class="w-1/3 pl-4"> Date</th>
-                                    <td>仮１</td>
+                                    <th class="w-1/3 pl-4">date</th>
+                                    <td id="output_date"></td>
                                 </tr>
                                 <tr>
-                                    <th class="w-1/3 pl-4"> Time</th>
-                                    <td>仮１</td>
+                                    <th class="w-1/3 pl-4">time</th>
+                                    <td id="output_time"></td>
                                 </tr>
                                 <tr>
-                                    <th class="w-1/3 pl-4"> Number</th>
-                                    <td>仮１</td>
+                                    <th class="w-1/3 pl-4">number</th>
+                                    <td id="output_number"></td>
                                 </tr>
                             </table>
-                        </div> --}}
+                        </div>
                     </div>
 
                     {{-- ボタン --}}
-                    <button type="submit" class="text-white py-2 w-full bg-blue-700 absolute bottom-0 rounded-b-lg transition duration-200 hover:bg-blue-500">予約する</button>
+                    <button onclick="return confirm('予約を確定しますか？')" type="submit" class="text-white py-2 w-full bg-blue-700 absolute bottom-0 rounded-b-lg transition duration-200 hover:bg-blue-500">予約する</button>
                 </form>
             </div>
         @endauth

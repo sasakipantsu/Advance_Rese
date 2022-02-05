@@ -13,20 +13,6 @@
 
     <div class="relative min-h-screen md:flex">
 
-        <!-- mobile menu top -->
-        <div class="bg-blue-500 text-gray-100 flex justify-between md:hidden">
-
-            <!-- mobile logo -->
-            <a href="/" class="block p-4 text-white font-bold">Rese</a>
-
-            <!-- mobile menu button -->
-            <button class="mobile-menu-button p-4 focus:outline-none rounded transition duration-200 hover:bg-blue-400">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h8m-8 6h16" />
-                </svg>
-            </button>
-        </div>
-
         <!-- サイドバー -->
         <div class="sidebar md:bg-blue-600 md:text-blue-100 md:w-1/5 space-y-6 py-7 px-2 absolute inset-y-0 left-0 transform -translate-x-full md:relative md:translate-x-0 transition duration-200 ease-in-out">
 
@@ -89,12 +75,7 @@
                         <select name = "area_id" class="py-2 text-sm rounded-md">
                             <option value = "0" selected>all area</option>
                             @foreach($prefs as $pref)
-                                {{-- @if(!empty($request->area_id) && $request->area_id == $pref->id)
-                                    <option value = "{{ $pref->id }}" selected>{{ $pref->name }}</option>
-                                @else
-                                    <option value = "{{ $pref->id }}">{{ $pref->name }}</option>
-                                @endif --}}
-                                <option value="{{ $pref->id }}" @if(old('area_id') == $pref->id) selected @endif>{{ $pref->name }}</option>
+                                <option value="{{ $pref->id }}">{{ $pref->name }}</option>
                             @endforeach
                         </select>
 
@@ -102,12 +83,7 @@
                         <select name="genre_id" class="py-2 text-sm rounded-md">
                             <option value = "0" selected>All genre</option>
                             @foreach($genres as $genre)
-                                {{-- @if(!empty($request->genre_id) && $request->genre_id == $genre->id)
-                                    <option value = "{{ $genre->id }}" selected>{{ $genre->genre_name }}</option>
-                                @else
-                                    <option value = "{{ $genre->id }}">{{ $genre->genre_name }}</option>
-                                @endif --}}
-                                <option value="{{ $genre->id }}" @if(old('genre_id') == $genre->id) selected @endif>{{ $genre->genre_name }}</option>
+                                <option value="{{ $genre->id }}">{{ $genre->genre_name }}</option>
                             @endforeach
                         </select>
 
